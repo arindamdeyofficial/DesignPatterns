@@ -5,9 +5,4 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\AbstractFactory\AbstractFactory.csproj" />
-    <ProjectReference Include="..\..\Factory\Factory.csproj" />
-  </ItemGroup>
-
 </Project>
