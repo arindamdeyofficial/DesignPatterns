@@ -1,23 +1,22 @@
 ﻿using Factory;
 using System;
+using System.Threading.Tasks;
 
 namespace Factory
 {
     public class FactoryPattern: IFactoryPattern
     {        
-        public IDevice CreateDevice(string deviceType)
+        public IDevice CreateDevice(int deviceType)
         {
-            DeviceEnum deviceTypeEnum;
-            if (Enum.TryParse(deviceType.ToUpper(), out deviceTypeEnum)) deviceTypeEnum = DeviceEnum.NODEVICE;
-            switch (deviceTypeEnum)
+            switch (deviceType)
             {
-                case DeviceEnum.DESKTOP:
+                case 2:
                     return new Desktop();
-                case DeviceEnum.MOBILE:
+                case 3:
                     return new Mobile();
-                case DeviceEnum.LAPTOP:
+                case 1:
                     return new Laptop();
-                case DeviceEnum.TABLET:
+                case 4:
                     return new Tablet();
                 default:
                     return new NoDevice();

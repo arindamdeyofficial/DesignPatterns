@@ -1,9 +1,10 @@
 ﻿using System;
 
-namespace Factory
+namespace AbstractFactory
 {
-    public class Mobile : IDevice
+    public abstract class Mobile : IMobile
     {
         public string DeviceType { get => DeviceEnum.MOBILE.ToString(); set => DeviceType = value; }
+        public abstract string DeviceName { get; set; }
     }
 }

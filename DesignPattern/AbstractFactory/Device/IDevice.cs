@@ -4,6 +4,6 @@ namespace AbstractFactory
 {
     public interface IDevice
     {
-        DeviceEnum DeviceType { get; set; }
+        string DeviceType { get; set; }
     }
 }

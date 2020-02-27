@@ -4,6 +4,6 @@ namespace Factory
 {
     public class NoDevice : IDevice
     {
-        public DeviceEnum DeviceType { get => DeviceEnum.NODEVICE; set => DeviceType = value; }
+        public string DeviceType { get => DeviceEnum.NODEVICE.ToString(); set => DeviceType = value; }
     }
 }

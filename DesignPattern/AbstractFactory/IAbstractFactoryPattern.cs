@@ -2,7 +2,8 @@
 
 namespace AbstractFactory
 {
-    public interface IAbstractFactoryPattern : IDeviceAbstractFactory
+    public interface IAbstractFactoryPattern
     {
+        IDevice CreateDevice(int deviceType, int deviceModel);
     }
 }

@@ -4,23 +4,30 @@ namespace AbstractFactory
 {
     public class AbstractFactoryPattern : IAbstractFactoryPattern
     {        
-        public IDevice CreateDevice(string deviceType)
+        public IDevice CreateDevice(int deviceType, int deviceModel)
         {
-            DeviceEnum deviceTypeEnum;
-            if (Enum.TryParse(deviceType.ToUpper(), out deviceTypeEnum)) deviceTypeEnum = DeviceEnum.NODEVICE;
-            switch (deviceTypeEnum)
+            IDevice device;
+            DeviceFactoryAbstract factory;
+            switch (deviceType)
             {
-                case DeviceEnum.DESKTOP:
-                    return new Desktop();
-                case DeviceEnum.MOBILE:
-                    return new Mobile();
-                case DeviceEnum.LAPTOP:
-                    return new Laptop();
-                case DeviceEnum.TABLET:
-                    return new Tablet();
+                case 2:
+                    factory = new DesktopFactory(deviceModel); 
+                    device = factory.Device;
+                    break;
+                case 3:
+                    factory = new MobileFactory(deviceModel);
+                    device = factory.Device; 
+                    break;
+                case 1:
+                    factory = new LaptopFactory(deviceModel);
+                    device = factory.Device; 
+                    break;
                 default:
-                    return new NoDevice();
+                    factory = new DesktopFactory(deviceModel);
+                    device = factory.Device; 
+                    break;
             }
+            return device;
         }
     }
 }

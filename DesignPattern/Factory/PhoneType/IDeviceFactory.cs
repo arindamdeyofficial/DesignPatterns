@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace Factory
+﻿namespace Factory
 {
     public interface IDeviceFactory
     {
-        IDevice CreateDevice(string deviceType);
+        IDevice CreateDevice(int deviceType);
     }
 }
