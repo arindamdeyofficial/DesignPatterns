@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Observer;
 
 namespace DesignPattern
 {
@@ -25,6 +26,7 @@ namespace DesignPattern
             services.AddMvc();
             services.AddSingleton<IFactoryPattern, FactoryPattern>();
             services.AddSingleton<IAbstractFactoryPattern, AbstractFactoryPattern>();
+            services.AddSingleton<IObserverPattern, ObserverPattern>();
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {

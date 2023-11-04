@@ -6,6 +6,7 @@ using AbstractFactory;
 using Factory;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Observer;
 
 namespace DesignPattern.Controllers
 {
@@ -15,12 +16,16 @@ namespace DesignPattern.Controllers
     {
         private readonly IFactoryPattern _factory;
         private readonly IAbstractFactoryPattern _abstractFactory;
+        private readonly IObserverPattern _observer;
+
         public DesignpatternController(
           [FromServices]IFactoryPattern factory,
-            [FromServices]IAbstractFactoryPattern abstractFactory)
+            [FromServices]IAbstractFactoryPattern abstractFactory,
+            [FromServices]IObserverPattern observer)
         {
             _factory = factory;
             _abstractFactory = abstractFactory;
+            _observer = observer;
         }
 
         [HttpGet("~/api/[controller]/Factory")]
@@ -32,6 +37,11 @@ namespace DesignPattern.Controllers
         public JsonResult AbstractFactory(int deviceType, int deviceModel)
         {
             return new JsonResult(_abstractFactory.CreateDevice(deviceType, deviceModel));
+        }
+        [HttpGet("~/api/[controller]/Observer")]
+        public JsonResult Observer(int deviceType, int deviceModel)
+        {
+            return new JsonResult(_observer.CreateDevice(deviceType, deviceModel));
         }
     }
 }
