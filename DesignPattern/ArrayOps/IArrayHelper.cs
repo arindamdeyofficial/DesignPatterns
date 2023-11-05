@@ -14,7 +14,7 @@ namespace ArrayOps
     //        with various levels of importance.You always pick the most important one first, but new data is free to arrive
     //        without making you sort all over from scratch.
     public interface IArrayHelper<T>
-        where T : class, new()
+        where T : class
     {
         public int Length { get; }
         public bool IsEmpty { get;}
@@ -25,5 +25,6 @@ namespace ArrayOps
         public T[] Distinct();
         public int IndexOf(T element);
         public void Print();
+        public T[] GetArray();
     }
 }

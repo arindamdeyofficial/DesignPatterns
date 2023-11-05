@@ -7,7 +7,7 @@ using System.Xml.Linq;
 namespace ArrayOps
 {
     public class StackHelper<T> : IStackHelper<T>
-        where T : class, new()
+        where T : class
     {
         private readonly int _size;
         private int top;
@@ -80,6 +80,8 @@ namespace ArrayOps
 
         public void Print()
         {
+            T[] arrToShow = GetArray();
+
             if (top < 0)
             {
                 Console.WriteLine("Stack Underflow");
@@ -90,9 +92,20 @@ namespace ArrayOps
                 Console.WriteLine("Items in the Stack are :");
                 for (int i = top; i >= 0; i--)
                 {
-                    Console.WriteLine(_stack[i]);
+                    Console.WriteLine(arrToShow[i]);
                 }
             }
+        }
+
+        public T[] GetArray()
+        {
+            T[] arrToShow = new T[top+1];
+            for (int i = 0; i <= top; i++)
+            {
+                if (_stack[i] == null) break;
+                arrToShow[i] = _stack[i];
+            }
+            return arrToShow;
         }
     }
 }
